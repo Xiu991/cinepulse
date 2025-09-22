@@ -1,0 +1,11 @@
+{
+  "name": "Cinepulse",
+  "version": "2.0.2",
+  "lang": "fr",
+  "quality": "1080p",
+  "baseUrl": "https://cinepulse.cc/",
+  "searchUrl": "https://cinepulse.cc/content/advanced-search?query=%s&sortBy=pertinence",
+  "scriptUrl": "https://gitlab.com/sora-source/modules/-/raw/main/cinepulse/cinepulse.js",
+  "subtitles": true,
+  "type": "movies"
+}
