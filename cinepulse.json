@@ -1,11 +1,21 @@
 {
-  "name": "Cinepulse",
-  "version": "2.0.2",
-  "lang": "fr",
-  "quality": "1080p",
-  "baseUrl": "https://cinepulse.cc/",
-  "searchUrl": "https://cinepulse.cc/content/advanced-search?query=%s&sortBy=pertinence",
-  "scriptUrl": "https://gitlab.com/sora-source/modules/-/raw/main/cinepulse/cinepulse.js",
-  "subtitles": true,
-  "type": "movies"
+    "sourceName": "Cinepulse",
+    "iconUrl": "https://raw.githubusercontent.com/Xiu991/cinepulse/main/logo.png",
+    "author": {
+        "name": "Xiu991",
+        "icon": "https://raw.githubusercontent.com/Xiu991/cinepulse/main/logo.png",
+        "url": "https://github.com/Xiu991/cinepulse"
+    },
+    "version": "2.0.3",
+    "language": "French",
+    "streamType": "HLS",
+    "quality": "1080p",
+    "type": "movies",
+    "downloadSupport": true,
+    "baseUrl": "https://cinepulse.cc/",
+    "searchBaseUrl": "https://cinepulse.cc/content/advanced-search?query=%s&sortBy=pertinence",
+    "scriptUrl": "https://raw.githubusercontent.com/Xiu991/cinepulse/main/cinepulse.js",
+    "asyncJS": true,
+    "streamAsyncJS": true,
+    "softsub": true
 }
