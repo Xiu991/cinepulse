@@ -1,32 +1,36 @@
-// Cinepulse Sora Module
-// Adapté pour cinepulse.cc
-// Version 2.0.3
+// Module Sora pour Cinepulse
+// Version 1.0.0
+// https://cinepulse.cc/
 
-const baseUrl = "https://cinepulse.cc/";
+const baseUrl = 'https://cinepulse.cc/';
 
 async function searchMovies(query) {
-    const url = `${baseUrl}content/advanced-search?query=${encodeURIComponent(query)}&sortBy=pertinence`;
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.results.map(movie => ({
-        id: movie.id,
-        title: movie.title,
-        url: `${baseUrl}watch/${movie.slug}`,
-        poster: movie.poster,
-        type: "movie"
-    }));
+    const searchUrl = `${baseUrl}search?q=${encodeURIComponent(query)}`;
+    const response = await fetch(searchUrl);
+    const html = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const movies = Array.from(doc.querySelectorAll('.movie-item')).map(movie => {
+        const title = movie.querySelector('.movie-title').textContent.trim();
+        const url = movie.querySelector('a').href;
+        const poster = movie.querySelector('img').src;
+        return { title, url, poster };
+    });
+    return movies;
 }
 
-async function getMovieStreams(id) {
-    const url = `${baseUrl}api/movie/${id}/streams`;
+async function getMovieStreams(url) {
     const response = await fetch(url);
-    const data = await response.json();
-    return data.streams.map(stream => ({
-        url: stream.url,
-        quality: stream.quality,
-        subtitles: stream.subtitles || []
-    }));
+    const html = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const streams = Array.from(doc.querySelectorAll('.stream-item')).map(stream => {
+        const quality = stream.querySelector('.quality').textContent.trim();
+        const streamUrl = stream.querySelector('a').href;
+        return { quality, url: streamUrl };
+    });
+    return streams;
 }
 
-// Export functions for Sora
+// Exportation des fonctions pour Sora
 export { searchMovies, getMovieStreams };
