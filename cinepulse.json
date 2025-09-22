@@ -14,7 +14,7 @@
     "downloadSupport": true,
     "baseUrl": "https://cinepulse.cc/",
     "searchBaseUrl": "https://cinepulse.cc/catalog?query=",
-    "scriptUrl": "URL_DU_SCRIPT",
+    "scriptUrl": "https://raw.githubusercontent.com/Xiu991/cinepulse/refs/heads/main/cinepulse.js",
     "asyncJS": true,
     "streamAsyncJS": true,
     "softsub": true
